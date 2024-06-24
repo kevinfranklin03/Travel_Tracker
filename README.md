@@ -1,5 +1,5 @@
 
-# Visited Countries Tracker
+# Visited Countries Tracker(POST-GRES)
 
 This is a simple web application built with Node.js, Express, and PostgreSQL to track the countries you've visited. Users can add countries and view a list of visited countries with the total count.
 
