@@ -1,112 +1,95 @@
+This is a simple web application built with Node.js, Express, and PostgreSQL to track the countries you've visited. Users can add countries and view a list of visited countries with the total count.
 
-# Visited Countries Tracker
+Features
+Add countries to your visited list.
+View a list of visited countries with the total count.
+Handles errors gracefully, such as adding a non-existent country or a duplicate entry.
+Prerequisites
+Node.js and npm installed (https://nodejs.org/en/download/package-manager)
+PostgreSQL installed and running (https://www.postgresql.org/download/)
+Getting Started
+Follow these steps to set up and run the project locally:
 
-A simple web application built with Node.js, Express, and PostgreSQL to track countries you've visited. Users can add countries they've visited, and the application will display a list of these countries along with the total number of visited countries.
+Installation
+Clone the repository:
 
-## Features
+Bash
+git clone https://github.com/your-username/visited-countries-tracker.git
+cd visited-countries-tracker
+Use code with caution.
+content_copy
+Install dependencies:
 
-- Add a country to the visited list.
-- Display the list of visited countries.
-- Handle errors gracefully, such as adding a country that does not exist or has already been added.
+Bash
+npm install
+Use code with caution.
+content_copy
+Set up the database:
 
-## Prerequisites
+Make sure PostgreSQL is installed and running.
 
-- Node.js and npm
-- PostgreSQL
+Create a new database named world:
 
-## Getting Started
+SQL
+CREATE DATABASE world;
+Use code with caution.
+content_copy
+Create the necessary tables:
 
-Follow these instructions to set up and run the project locally.
+SQL
+\c world
 
-### Installation
+CREATE TABLE countries (
+    country_code CHAR(3) PRIMARY KEY,
+    country_name VARCHAR(100) NOT NULL
+);
 
-1. **Clone the repository**
+CREATE TABLE visited_countries (
+    country_code CHAR(3) REFERENCES countries(country_code) ON DELETE CASCADE
+);
+Use code with caution.
+content_copy
+Populate the countries table with country codes and names. You can find datasets online or manually insert data for testing purposes.
 
-   \`\`\`bash
-   git clone https://github.com/your-username/visited-countries-tracker.git
-   cd visited-countries-tracker
-   \`\`\`
+Configure the database connection:
 
-2. **Install dependencies**
+Update the database configuration in index.js with your PostgreSQL credentials:
 
-   \`\`\`bash
-   npm install
-   \`\`\`
+JavaScript
+const db = new pg.Client({
+    user: "postgres",
+    host: "localhost",
+    database: "world",
+    password: "your_password",
+    port: 5432,
+});
+Use code with caution.
+content_copy
+Run the application:
 
-3. **Set up the database**
+Bash
+npm start
+Use code with caution.
+content_copy
+The server will start on http://localhost:3000.
 
-   - Ensure PostgreSQL is installed and running on your machine.
-   - Create a new database named \`world\`:
+Usage
+Open http://localhost:3000 in your browser.
+Enter the name of the country you've visited in the input field and submit.
+The application will display the updated list of visited countries and the total count.
+Error Handling
+If you try to add a country that doesn't exist in the database, an error message will be displayed.
+If you try to add a country that's already on your visited list, an error message will be displayed.
+Dependencies
+Express - https://expressjs.com/
+Body-Parser - https://www.npmjs.com/package/body-parser
+PG - https://www.npmjs.com/package/pg
+EJS - https://www.npmjs.com/package/ejs
+Contributing
+We welcome contributions! Feel free to fork the project, create a feature branch, and submit a pull request.
 
-     \`\`\`sql
-     CREATE DATABASE world;
-     \`\`\`
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-   - Create the necessary tables:
-
-     \`\`\`sql
-     \c world
-
-     CREATE TABLE countries (
-       country_code CHAR(3) PRIMARY KEY,
-       country_name VARCHAR(100) NOT NULL
-     );
-
-     CREATE TABLE visited_countries (
-       country_code CHAR(3) REFERENCES countries(country_code) ON DELETE CASCADE
-     );
-     \`\`\`
-
-   - Populate the \`countries\` table with country codes and names. You can find datasets online or manually insert data for testing.
-
-4. **Configure the database connection**
-
-   Update the database configuration in \`index.js\`:
-
-   \`\`\`javascript
-   const db = new pg.Client({
-     user: "postgres",
-     host: "localhost",
-     database: "world",
-     password: "your_password",
-     port: 5432,
-   });
-   \`\`\`
-
-5. **Run the application**
-
-   \`\`\`bash
-   npm start
-   \`\`\`
-
-   The server will be running on \`http://localhost:3000\`.
-
-## Usage
-
-- Open \`http://localhost:3000\` in your browser.
-- Add the name of the country you have visited in the input field and submit.
-- The list of visited countries and the total number will be displayed on the home page.
-
-## Error Handling
-
-- If you try to add a country that does not exist in the \`countries\` table, an error message will be displayed.
-- If you try to add a country that has already been added, an error message will be displayed.
-
-## Dependencies
-
-- [Express](https://expressjs.com/)
-- [Body-Parser](https://www.npmjs.com/package/body-parser)
-- [PG](https://www.npmjs.com/package/pg)
-- [EJS](https://www.npmjs.com/package/ejs)
-
-## Contributing
-
-Feel free to fork the project, create a feature branch, and submit a pull request. Contributions are welcome!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
+Contact
 For any questions or comments, please open an issue on GitHub.
