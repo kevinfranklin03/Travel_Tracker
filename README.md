@@ -1,6 +1,3 @@
-Certainly! Here's the README.md file converted into a proper format:
-
----
 
 # Visited Countries Tracker
 
@@ -104,19 +101,3 @@ The server will start on `http://localhost:3000`.
 - [Body-Parser](https://www.npmjs.com/package/body-parser)
 - [PG](https://www.npmjs.com/package/pg)
 - [EJS](https://www.npmjs.com/package/ejs)
-
-## Contributing
-
-We welcome contributions! Feel free to fork the project, create a feature branch, and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-## Contact
-
-For any questions or comments, please open an issue on [GitHub](https://github.com/your-username/visited-countries-tracker).
-
----
-
-This README provides clear instructions on how to set up, run, and use the application, along with important details about dependencies, error handling, contributing guidelines, and licensing information.
