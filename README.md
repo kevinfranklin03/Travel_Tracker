@@ -22,29 +22,29 @@ Follow these instructions to set up and run the project locally.
 
 1. **Clone the repository**
 
-   ``bash
+   \`\`\`bash
    git clone https://github.com/your-username/visited-countries-tracker.git
    cd visited-countries-tracker
-   ``
+   \`\`\`
 
 2. **Install dependencies**
 
-   ``bash
+   \`\`\`bash
    npm install
-   ``
+   \`\`\`
 
 3. **Set up the database**
 
    - Ensure PostgreSQL is installed and running on your machine.
-   - Create a new database named `world`:
+   - Create a new database named \`world\`:
 
-     ``sql
+     \`\`\`sql
      CREATE DATABASE world;
-     ``
+     \`\`\`
 
    - Create the necessary tables:
 
-     ``sql
+     \`\`\`sql
      \c world
 
      CREATE TABLE countries (
@@ -55,7 +55,7 @@ Follow these instructions to set up and run the project locally.
      CREATE TABLE visited_countries (
        country_code CHAR(3) REFERENCES countries(country_code) ON DELETE CASCADE
      );
-     ``
+     \`\`\`
 
    - Populate the \`countries\` table with country codes and names. You can find datasets online or manually insert data for testing.
 
@@ -63,7 +63,7 @@ Follow these instructions to set up and run the project locally.
 
    Update the database configuration in \`index.js\`:
 
-   ``javascript
+   \`\`\`javascript
    const db = new pg.Client({
      user: "postgres",
      host: "localhost",
@@ -71,13 +71,13 @@ Follow these instructions to set up and run the project locally.
      password: "your_password",
      port: 5432,
    });
-   ``
+   \`\`\`
 
 5. **Run the application**
 
-   ``bash
+   \`\`\`bash
    npm start
-   ``
+   \`\`\`
 
    The server will be running on \`http://localhost:3000\`.
 
